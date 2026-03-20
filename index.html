@@ -65,7 +65,6 @@
             height: 100px;
             z-index: 997;
             display: flex;
-            /* Added to make justify/align work */
             justify-content: center;
             align-items: center;
             color: rgba(0, 0, 0, 0);
@@ -87,7 +86,6 @@
             height: 100px;
             z-index: 997;
             display: flex;
-            /* Added to make justify/align work */
             justify-content: center;
             align-items: center;
             color: rgba(0, 0, 0, 0);
@@ -529,22 +527,98 @@
             color: var(--text-primary);
         }
 
+        /* ========================================= */
+        /* MOBILE RESPONSIVENESS ADDITIONS           */
+        /* ========================================= */
         @media (max-width: 900px) {
             .footer-container {
                 grid-template-columns: 1fr 1fr;
             }
         }
 
+        @media (max-width: 768px) {
+            /* Navigation */
+            nav {
+                height: auto;
+                padding: 10px 0;
+                border-radius: 20px;
+            }
+            .nav-container {
+                flex-direction: column;
+                gap: 10px;
+                padding: 0 16px;
+            }
+            .nav-links {
+                width: 100%;
+                overflow-x: auto;
+                white-space: nowrap;
+                padding-bottom: 8px;
+                justify-content: flex-start;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none; /* Firefox */
+            }
+            .nav-links::-webkit-scrollbar {
+                display: none; /* Chrome/Safari */
+            }
+            
+            /* Body & Layout adjustments */
+            main {
+                margin-top: 140px; /* offset for taller mobile nav */
+            }
+            section {
+                padding: 40px 20px 80px 20px;
+            }
+            
+            /* Typography */
+            h1 { font-size: 2.8rem; }
+            h2 { font-size: 2.2rem; }
+            .hero p { font-size: 1.1rem; margin-bottom: 32px; }
+            
+            /* Images and Containers */
+            .hero-visual {
+                height: auto;
+                padding: 20px;
+            }
+            .hero-visual img {
+                width: 100% !important;
+                height: auto !important;
+                max-height: 400px;
+            }
+            
+            /* Force single column layout */
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            /* Policy & Docs padding adjustment */
+            .policy-container, .docs-content, .changelog-entry, .card {
+                padding: 24px;
+            }
+        }
+
         @media (max-width: 600px) {
             .footer-container {
                 grid-template-columns: 1fr;
+                gap: 30px;
             }
-
             .footer-bottom {
                 flex-direction: column;
                 gap: 20px;
                 text-align: center;
             }
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+            
+            /* Stack hero buttons */
+            .hero > div[style*="display: flex"] {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+                gap: 12px !important;
+            }
+            .btn { width: 100%; }
+            
+            pre { padding: 16px; font-size: 0.8rem; }
         }
     </style>
 </head>
@@ -578,7 +652,6 @@
     </div>
 
     <main>
-        <!-- OVERVIEW -->
         <section id="overview" class="active">
             <div class="hero">
                 <h1>Everything on your PC,<br>instantly found.</h1>
@@ -598,7 +671,6 @@
                 </div>
         </section>
 
-        <!-- ABOUT -->
         <section id="about">
             <h2>The core principles.</h2>
             <div style="max-width: 850px;">
@@ -622,7 +694,6 @@
             </div>
         </section>
 
-        <!-- FEATURES -->
         <section id="features">
             <h2>Power in every query.</h2>
             <div class="grid">
@@ -647,7 +718,6 @@
             </div>
         </section>
 
-        <!-- HOW IT'S BUILT -->
         <section id="built">
             <h2>Engineering Specs.</h2>
             <div style="max-width: 850px;">
@@ -715,7 +785,6 @@
             </div>
         </section>
 
-        <!-- DOCUMENTATION -->
         <section id="docs">
             <h2>FindeX Documentation</h2>
             <div class="docs-content">
@@ -753,7 +822,6 @@ Search Pipeline:
             </div>
         </section>
 
-        <!-- CHANGELOG (REPLACING NEWS) -->
         <section id="news">
             <h2>FindeX Release Notes</h2>
 
@@ -864,7 +932,6 @@ Search Pipeline:
             </div>
         </section>
 
-        <!-- POLICIES -->
         <section id="policies">
             <div class="policy-container">
                 <div class="policy-section">
@@ -1117,7 +1184,6 @@ Search Pipeline:
             </div>
         </section>
 
-        <!-- DOWNLOAD -->
         <section id="download">
             <div style="text-align: center; margin-bottom: 60px;">
                 <h2>Take FindeX with You</h2>
